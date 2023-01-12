@@ -8,6 +8,7 @@ const psmq = require('postcss-sort-media-queries');
 const flatten = require('gulp-flatten');
 const cleanCSS = require('gulp-clean-css');
 const javascriptObfuscator = require('gulp-javascript-obfuscator');
+const newer = require('gulp-newer');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 
@@ -49,6 +50,7 @@ gulp.task('js', function () {
 gulp.task('images', function () {
     return gulp
         .src(DIR.srcImages)
+        .pipe(newer(DIR.destImages))
         .pipe(imagemin())
         .pipe(gulp.dest(DIR.destImages));
 });

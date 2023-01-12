@@ -1,1 +1,1 @@
-{"version":3,"sources":["sourceMap"],"names":["console"],"mappings":"4xBAAAA,OAAA,C,KAAA,E,IAAA,C","sourcesContent":["console.log(111);"],"file":"main.js"}
+{"version":3,"sources":["sourceMap"],"names":["console"],"mappings":"wnCAAAA,OAAA,C,gBAAA,E,IAAA,C","sourcesContent":["console.log(111);"],"file":"main.js"}
