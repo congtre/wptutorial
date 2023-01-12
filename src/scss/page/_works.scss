@@ -1,0 +1,8 @@
+@use '../global/' as g;
+
+.works {
+    padding: 70px 0;
+    @include g.mq('lg') {
+        padding: 150px 0;
+    }
+}

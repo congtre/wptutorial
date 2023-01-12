@@ -1,0 +1,22 @@
+@use '../global' as g;
+
+body {
+    color: g.$color-primary;
+    font-family: g.$font-primary;
+    font-size: g.rem(14);
+    line-height: 1.7em;
+    @include g.mq('lg') {
+        font-size: g.rem(16);
+    }
+}
+
+#wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}

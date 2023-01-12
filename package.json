@@ -14,6 +14,7 @@
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-flatten": "^0.4.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-javascript-obfuscator": "^1.1.6",
     "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.1.0",

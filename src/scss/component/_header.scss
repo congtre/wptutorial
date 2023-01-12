@@ -1,0 +1,239 @@
+@use '../global' as g;
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    transition: all 0.5s;
+    &.active {
+        position: fixed;
+        background-color: rgba(255, 255, 255, 0.7);
+        box-shadow: 0px 10px 50px -22px rgb(199 199 199 / 80%);
+        animation: animation-header 0.3s;
+    }
+    &__wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    }
+    &__logo {
+        position: relative;
+        width: 40px;
+        z-index: 11;
+    }
+    &__nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        padding: 60px 0 80px;
+        background-color: g.$color-white;
+        z-index: 10;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s;
+        @include g.mq('lg') {
+            position: static;
+            display: flex;
+            align-items: center;
+            width: auto;
+            height: auto;
+            padding: 0;
+            background-color: transparent;
+            opacity: 1;
+            visibility: visible;
+        }
+        &.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__menu {
+        &-item {
+            position: relative;
+            display: block;
+            border-bottom: 1px solid g.$color-light-violet;
+            @include g.mq('lg') {
+                display: inline-block;
+                margin-left: 20px;
+                border-bottom: none;
+            }
+        }
+        &-link {
+            display: block;
+            padding: 12px 20px;
+            background-color: g.$color-violet;
+            color: g.$color-white;
+            font-family: g.$font-en-primary;
+            font-size: g.rem(16);
+            font-weight: 400;
+            line-height: 1.5em;
+            letter-spacing: 0.08em;
+            transition: all 0.5s;
+        }
+        &-sub {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            opacity: 0;
+            visibility: hidden;
+            .header__menu-item {
+                display: block;
+            }
+        }
+    }
+    &__contact {
+        margin: 40px 0 0;
+        padding: 0 20px;
+        @include g.mq('lg') {
+            display: none;
+        }
+        @include g.mq('xl') {
+            display: flex;
+            align-items: center;
+            margin: 0 0 0 30px;
+            padding: 0;
+        }
+        &-tel {
+            max-width: 300px;
+            margin: 0 auto 10px;
+            @include g.mq('lg') {
+                margin: 0;
+            }
+            &-link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 15px 25px;
+                background-color: g.$color-orange;
+                border-radius: 10px;
+                color: g.$color-white;
+                font-family: g.$font-en-primary;
+                font-size: g.rem(20);
+                font-weight: 400;
+                text-transform: uppercase;
+                line-height: 1.5em;
+                letter-spacing: 0.05em;
+                @include g.mq('lg') {
+                    padding: 0;
+                    background-color: transparent;
+                    color: g.$color-primary;
+                }
+                &::before {
+                    content: '';
+                    display: inline-flex;
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 5px;
+                    background: url(../images/icon_iphone_white.svg) no-repeat
+                        center/contain;
+                    @include g.mq('lg') {
+                        background-image: url(../images/icon_iphone_black.svg);
+                    }
+                }
+            }
+        }
+        &-mail {
+            max-width: 300px;
+            margin: 0 auto;
+            @include g.mq('lg') {
+                margin: 0 0 0 20px;
+            }
+            &-link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 15px 25px;
+                background-color: g.$color-orange;
+                border-radius: 10px;
+                color: g.$color-white;
+                font-family: g.$font-en-primary;
+                font-size: 18px;
+                font-weight: 400;
+                text-transform: uppercase;
+                line-height: 1.5em;
+                letter-spacing: 0.05em;
+                transition: all 0.5s;
+                @include g.mq('lg') {
+                    border-radius: 70px;
+                    &:hover {
+                        color: g.$color-white;
+                        background-color: g.$color-primary;
+                        &::before {
+                            background: url(../images/icon_mail_o.svg) no-repeat
+                                center/contain;
+                        }
+                    }
+                }
+                &::before {
+                    content: '';
+                    display: inline-flex;
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 5px;
+                    background: url(../images/icon_mail.svg) no-repeat
+                        center/contain;
+                    transition: all 0.5s;
+                }
+            }
+        }
+    }
+}
+.hamburger {
+    position: relative;
+    width: 35px;
+    height: 22px;
+    z-index: 11;
+    transition: all 0.5s;
+    cursor: pointer;
+    @include g.mq('lg') {
+        display: none;
+    }
+
+    &::before,
+    &::after,
+    span::before,
+    span::after {
+        content: '';
+        width: 100%;
+        height: 2px;
+        background-color: g.$color-primary;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 0.5s;
+    }
+
+    &::before {
+        top: 0;
+    }
+
+    &::after {
+        bottom: 0;
+    }
+
+    span::before,
+    span::after {
+        top: 10px;
+    }
+
+    &.active::before,
+    &.active::after {
+        opacity: 0;
+    }
+
+    &.active span::before {
+        transform: translateX(-50%) rotate(40deg);
+    }
+
+    &.active span::after {
+        transform: translateX(-50%) rotate(-40deg);
+    }
+}

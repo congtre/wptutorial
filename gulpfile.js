@@ -8,13 +8,16 @@ const psmq = require('postcss-sort-media-queries');
 const flatten = require('gulp-flatten');
 const cleanCSS = require('gulp-clean-css');
 const javascriptObfuscator = require('gulp-javascript-obfuscator');
+const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 
 const DIR = {
     srcSass: './src/scss/**/*.scss',
     srcJs: './src/js/*.js',
+    srcImages: './src/images/*',
     destSass: './dist/css',
     destJs: './dist/js',
+    destImages: './dist/images',
     pathPhp: 'http://localhost/00_jweb/00_dcyoung/wptutorial/',
 };
 
@@ -43,6 +46,13 @@ gulp.task('js', function () {
         .pipe(gulp.dest(DIR.destJs));
 });
 
+gulp.task('images', function () {
+    return gulp
+        .src(DIR.srcImages)
+        .pipe(imagemin())
+        .pipe(gulp.dest(DIR.destImages));
+});
+
 gulp.task('browser-sync', function () {
     browserSync.init({
         proxy: DIR.pathPhp,
@@ -54,6 +64,10 @@ gulp.task('browser-sync', function () {
         browserSync.reload
     );
     gulp.watch(DIR.srcJs, gulp.series('js')).on('change', browserSync.reload);
+    gulp.watch(DIR.srcImages, gulp.series('images')).on(
+        'change',
+        browserSync.reload
+    );
     gulp.watch('./*.php').on('change', browserSync.reload);
 });
 
