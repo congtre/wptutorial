@@ -51,13 +51,37 @@
         <main class="main">
             <!-- ↓↓ visual ↓↓ -->
             <section class="home-visual">
-                <div class="container"></div>
+                <div class="container">
+                    <h2 class="home-visual__heading">Website số 1 về bất động sản<br>Mua, bán, cho thuê nhà đất toàn quốc</h2>
+                    <div class="home-visual__search">
+                        
+                    </div>
+                </div>
             </section>
             <!-- ↑↑ visual ↑↑ -->
 
             <!-- ↓↓ project ↓↓ -->
             <section class="home-project">
-                <div class="container"></div>
+                <div class="container">
+                    <h2 class="c-heading">Dự án nổi bật</h2>
+                    <div class="home-project__list">
+                        <div class="home-project__item">
+                            <div class="home-project__image">
+                                <img src="<?php echo get_template_directory_uri(); ?>/dist/images/img_project.jpg" alt="">
+                                <span class="home-project__image-number">7</span>
+                            </div>
+                            <div class="home-project__info">
+                                <p class="home-project__cate"></p>
+                                <p class="home-project__title"></p>
+                                <p class="home-project__address"></p>
+                                <ul class="home-project__ultity">
+                                    <li class="home-project__ultity-item"></li>
+                                </ul>
+                                <p class="home-project__time"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
             <!-- ↑↑ project ↑↑ -->
 

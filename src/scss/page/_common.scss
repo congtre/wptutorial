@@ -1,91 +1,11 @@
 @use '../global' as g;
 
-.heading {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 40px;
-    color: g.$color-primary;
-    font-size: g.rem(24);
+.c-heading {
+    margin-bottom: 70px;
+    font-size: g.rem(30);
     font-weight: 500;
+    text-align: center;
     line-height: 1.5em;
-    @include g.mq('lg') {
-        width: 400px;
-        margin-bottom: 0;
-        font-size: g.rem(30);
-    }
-    &__en {
-        position: relative;
-        margin-bottom: 25px;
-        color: g.$color-violet;
-        font-family: g.$font-en-primary;
-        font-size: g.rem(50);
-        font-weight: 400;
-        @include g.mq('lg') {
-            font-size: g.rem(60);
-        }
-        &::before {
-            content: '';
-            position: absolute;
-            bottom: -16px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: g.$color-orange;
-        }
-    }
-    &__wrap {
-        margin-bottom: 50px;
-        @include g.mq('lg') {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 70px;
-        }
-    }
-    &__content {
-        @include g.mq('lg') {
-            width: calc(100% - 400px);
-        }
-    }
-    &__title {
-        margin-bottom: 20px;
-        font-size: g.rem(18);
-        font-weight: 500;
-        line-height: 1.7em;
-        @include g.mq('lg') {
-            margin-bottom: 30px;
-            font-size: g.rem(24);
-        }
-    }
-    &--white {
-        color: g.$color-white;
-        .heading__en {
-            color: g.$color-white;
-        }
-    }
-    &--sm {
-        font-size: g.rem(16);
-        @include g.mq('lg') {
-            font-size: g.rem(18);
-        }
-        .heading__en {
-            font-size: g.rem(40);
-            @include g.mq('lg') {
-                font-size: g.rem(50);
-            }
-        }
-    }
-    &--row {
-        @include g.mq('lg') {
-            flex-direction: row;
-            width: auto;
-        }
-        .heading__en {
-            @include g.mq('lg') {
-                margin-right: 30px;
-            }
-        }
-    }
 }
 
 .button {
