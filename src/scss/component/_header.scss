@@ -121,18 +121,26 @@
             background-color: g.$color-gray;
         }
         &-post {
-            display: inline-block;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
             margin-left: 15px;
             padding: 7px 20px;
             background-color: g.$color-orange;
-            border: 1px solid g.$color-orange;
             border-radius: 5px;
             color: g.$color-white;
             font-weight: 500;
             transition: all 0.5s;
+            &::before {
+                content: '';
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                margin-right: 5px;
+                background: url(../images/icon_edit.svg) no-repeat center/contain;
+            }
             &:hover {
-                background-color: g.$color-white;
-                color: g.$color-primary;
+                background-color: g.$color-primary;
             }
         }
     }

@@ -4,8 +4,6 @@
     max-width: 280px;
     width: 100%;
     margin: 0 auto;
-    border-radius: 100px;
-    overflow: hidden;
     &__link {
         position: relative;
         display: flex;
@@ -15,6 +13,7 @@
         margin: 0 auto;
         padding: 17px 10px;
         background-color: g.$color-primary;
+        border-radius: 10px;
         color: g.$color-white;
         font-size: g.rem(16);
         font-weight: 400;
