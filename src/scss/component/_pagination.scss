@@ -1,0 +1,74 @@
+@use '../global' as g;
+
+.pagination {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 50px;
+    @include g.mq('lg') {
+        padding: 0;
+    }
+    span,
+    a {
+        display: inline-block;
+        margin: 5px 10px;
+        font-size: g.rem(18);
+        font-weight: 500;
+        line-height: 1.5em;
+        transition: all 0.5s;
+        &.current {
+            color: g.$color-gray;
+        }
+        &:hover {
+            opacity: 0.7;
+        }
+        @include g.mq('lg') {
+            font-size: g.rem(22);
+        }
+    }
+    .prev,
+    .next {
+        position: absolute;
+        top: -11px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background-color: g.$color-white;
+        border-radius: 100%;
+        border: 1px solid g.$color-primary;
+        @include g.mq('md') {
+            position: static;
+        }
+        @include g.mq('lg') {
+            width: 70px;
+            height: 70px;
+        }
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            background: url(../images/icon_arrow_black.svg) no-repeat
+                center/contain;
+            @include g.mq('lg') {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+    .prev {
+        left: -10px;
+        margin-right: 30px;
+        &::before {
+            transform: scaleX(-1);
+        }
+    }
+    .next {
+        right: -10px;
+        margin-left: 30px;
+    }
+}

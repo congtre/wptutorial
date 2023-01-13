@@ -24,6 +24,17 @@
     }
     &__logo {
         margin-bottom: 20px;
+        &-link {
+            display: flex;
+            align-items: flex-end;
+        }
+        &-text {
+            margin-left: 5px;
+            color: g.$color-white;
+            font-size: g.rem(18);
+            font-weight: 500;
+            line-height: 1.5em;
+        }
     }
     &__desc {
         color: g.$color-gray;

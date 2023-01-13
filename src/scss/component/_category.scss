@@ -1,0 +1,36 @@
+@use '../global' as g;
+
+.category {
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid g.$color-gray;
+    @include g.mq('lg') {
+        margin-bottom: 70px;
+        padding-bottom: 40px;
+    }
+    &__item {
+        display: inline-block;
+        margin: 10px;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    &__link {
+        display: inline-block;
+        padding: 5px 20px;
+        border-radius: 100px;
+        font-weight: 500;
+        line-height: 1.5em;
+        transition: all 0.5s;
+        &.active {
+            background-color: g.$color-orange;
+            color: g.$color-white;
+        }
+        @include g.mq('lg') {
+            &:hover {
+                background-color: g.$color-orange;
+                color: g.$color-white;
+            }
+        }
+    }
+}
