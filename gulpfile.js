@@ -13,8 +13,10 @@ const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 
 const DIR = {
+    src: './src',
+    dest: './dist',
     srcSass: './src/scss/**/*.scss',
-    srcJs: './src/js/*.js',
+    srcJs: './src/js/**/*.js',
     srcImages: './src/images/*',
     destSass: './dist/css',
     destJs: './dist/js',
@@ -71,6 +73,8 @@ gulp.task('browser-sync', function () {
         browserSync.reload
     );
     gulp.watch('./*.php').on('change', browserSync.reload);
+
+    gulp.src(`${DIR.src}/vender/**`).pipe(gulp.dest(`${DIR.dest}/vender`));
 });
 
 gulp.task('default', gulp.series('browser-sync'));

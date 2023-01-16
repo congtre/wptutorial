@@ -50,13 +50,9 @@
     }
     &__cate {
         margin-bottom: 5px;
-        display: inline-block;
-        padding: 2px 10px 1px;
-        background-color: g.$color-orange;
-        border-radius: 100px;
-        color: g.$color-white;
-        font-size: g.rem(12);
-        font-weight: 400;
+        color: g.$color-orange;
+        font-size: g.rem(14);
+        font-weight: 500;
         line-height: 1.5em;
     }
     &__title {
@@ -116,7 +112,7 @@
         justify-content: space-between;
         align-items: center;
         margin-top: 15px;
-        padding-top: 15px;
+        padding-top: 10px;
         border-top: 1px solid g.$color-light-gray;
     }
     &__time {

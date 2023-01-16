@@ -1,0 +1,43 @@
+@use '../global' as g;
+
+.project-article {
+    padding: 100px 0;
+    &__wrap {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__search {
+        width: 250px;
+    }
+    &__list {
+        width: calc(100% - 300px);
+    }
+    .c-project__list {
+        margin-bottom: 70px;
+    }
+    .c-project__item {
+        max-width: 100%;
+        width: 100%;
+        margin-right: 0;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .c-project__link {
+        display: flex;
+    }
+    .c-project__image {
+        width: 280px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .c-project__info {
+        width: calc(100% - 280px);
+    }
+    .c-project__title {
+        font-size: g.rem(16);
+    }
+}
