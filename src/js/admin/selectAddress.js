@@ -33,11 +33,13 @@ jQuery(async function ($) {
 
         const code = $(this).val();
 
-        district = Object.values(data).filter((el) => el.code === code)[0][
-            'quan-huyen'
-        ];
+        if (code !== '--') {
+            district = Object.values(data).filter((el) => el.code === code)[0][
+                'quan-huyen'
+            ];
 
-        renderOption(selectDistrict, district);
+            renderOption(selectDistrict, district);
+        }
     });
 
     selectDistrict.on('change', async function () {
@@ -45,16 +47,18 @@ jQuery(async function ($) {
 
         const code = $(this).val();
 
-        const ward = Object.values(district).filter(
-            (el) => el.code === code
-        )[0]['xa-phuong'];
-
-        renderOption(selectWard, ward);
+        if (code !== '--') {
+            const ward = Object.values(district).filter(
+                (el) => el.code === code
+            )[0]['xa-phuong'];
+    
+            renderOption(selectWard, ward);
+        }
     });
 
     const renderOption = (element, data) => {
         Object.values(data).map(function (el) {
             element.append(`<option value="${el.code}">${el.name}</option>`);
         });
-    }
+    };
 });
