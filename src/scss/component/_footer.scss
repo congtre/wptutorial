@@ -83,6 +83,19 @@
             line-height: 1.5em;
         }
     }
+    &__social {
+        a {
+            display: inline-block;
+            margin-right: 5px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+        svg {
+            width: 32px;
+            height: 32px;
+        }
+    }
     &__copy {
         padding: 15px;
         background-color: g.$color-primary;
