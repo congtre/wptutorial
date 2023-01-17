@@ -291,17 +291,18 @@
         max-width: 300px;
         display: block;
         width: 100%;
-        height: 70px;
+        height: 55px;
         margin: 0 auto;
         background-color: g.$color-primary;
         border-radius: 100px;
         color: g.$color-white;
-        font-size: g.rem(18);
+        font-size: g.rem(16);
         font-weight: 400;
         text-align: center;
         line-height: 1.5em;
         transition: all 0.5s;
         @include g.mq('lg') {
+            height: 70px;
             font-size: g.rem(20);
             &:hover {
                 background-color: g.$color-orange;
