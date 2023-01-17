@@ -1,0 +1,54 @@
+@use '../global' as g;
+
+.c-blog {
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 70px;
+    }
+    &__article {
+        width: calc(33.33% - 30px);
+        &-link {
+            display: block;
+            width: 100%;
+            background-color: g.$color-white;
+            box-shadow: 0px 10px 50px -22px rgba(199, 199, 199, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        &-image {
+        }
+        &-info {
+            padding: 15px;
+        }
+        &-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        &-date {
+            margin-right: 10px;
+            color: g.$color-gray;
+            font-size: g.rem(14);
+            font-weight: 500;
+            line-height: 1.5em;
+        }
+        &-cate {
+            color: g.$color-orange;
+            font-size: g.rem(14);
+            font-weight: 500;
+            line-height: 1.5em;
+        }
+        &-title {
+            margin-bottom: 10px;
+            font-size: g.rem(16);
+            font-weight: 500;
+            line-height: 1.5em;
+        }
+        &-desc {
+            margin-bottom: 10px;
+            font-size: g.rem(14);
+            line-height: 1.5em;
+        }
+    }
+}

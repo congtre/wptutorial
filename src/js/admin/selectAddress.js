@@ -3,6 +3,10 @@ jQuery(async function ($) {
     const selectDistrict = $('.js_district').find('select');
     const selectWard = $('.js_ward').find('select');
 
+    selectProvince.prepend('<option selected>--</option>');
+    selectDistrict.empty().prepend('<option selected>--</option>');
+    selectWard.empty().prepend('<option selected>--</option>');
+
     const getData = async () => {
         try {
             const data = await $.ajax({
@@ -20,10 +24,6 @@ jQuery(async function ($) {
     };
 
     const data = await getData();
-
-    selectProvince.prepend('<option selected>--</option>');
-    selectDistrict.empty().prepend('<option selected>--</option>');
-    selectWard.empty().prepend('<option selected>--</option>');
 
     let district;
 
@@ -51,7 +51,7 @@ jQuery(async function ($) {
             const ward = Object.values(district).filter(
                 (el) => el.code === code
             )[0]['xa-phuong'];
-    
+
             renderOption(selectWard, ward);
         }
     });
