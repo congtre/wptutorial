@@ -1,16 +1,25 @@
 @use '../global' as g;
 
 .project-detail {
-    padding: 100px 0;
+    padding: 70px 0;
+    @include g.mq('lg') {
+        padding: 100px 0;
+    }
     &__wrap {
-        display: flex;
-        justify-content: space-between;
+        @include g.mq('lg') {
+            display: flex;
+            justify-content: space-between;
+        }
     }
     &__main {
-        width: calc(100% - 300px);
+        @include g.mq('lg') {
+            width: calc(100% - 300px);
+        }
     }
     &__sidebar {
-        width: 250px;
+        @include g.mq('lg') {
+            width: 250px;
+        }
     }
     &__slide {
         margin-bottom: 50px;
@@ -35,10 +44,15 @@
             display: flex !important;
             justify-content: center;
             align-items: center;
-            width: 800px;
-            height: 450px;
+            width: calc(100vw - 40px);
+            height: 50vw;
             background-color: g.$color-light-gray;
+            @include g.mq('lg') {
+                width: 800px;
+                height: 450px;
+            }
             img {
+                width: 100%;
                 flex-shrink: 0;
             }
         }
@@ -46,20 +60,28 @@
     &__heading {
         width: 100%;
         margin-bottom: 40px;
-        font-size: g.rem(24);
+        font-size: g.rem(18);
         font-weight: 500;
         line-height: 1.5em;
+        @include g.mq('lg') {
+            font-size: g.rem(24);
+        }
         &-wrap {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             .c-project__like {
                 position: relative;
-                top: 5px;
+                top: 0;
                 flex-shrink: 0;
-                width: 30px;
-                height: 30px;
+                width: 25px;
+                height: 25px;
                 margin-left: 20px;
+                @include g.mq('lg') {
+                    top: 5px;
+                    width: 30px;
+                    height: 30px;
+                }
             }
         }
     }
@@ -83,9 +105,12 @@
     }
     &__title {
         margin-bottom: 20px;
-        font-size: g.rem(20);
+        font-size: g.rem(18);
         font-weight: 500;
         line-height: 1.5em;
+        @include g.mq('lg') {
+            font-size: g.rem(20);
+        }
     }
     &__desc {
         margin-bottom: 50px;
@@ -96,18 +121,22 @@
     &__ultity {
         margin-bottom: 50px;
         &-list {
-            display: flex;
-            flex-wrap: wrap;
+            @include g.mq('md') {
+                display: flex;
+                flex-wrap: wrap;
+            }
         }
         &-item {
             position: relative;
             display: flex;
             align-items: center;
-            width: 50%;
             margin-top: -1px;
             padding: 10px 0 10px 20px;
             border-top: 1px solid g.$color-light-gray;
             border-bottom: 1px solid g.$color-light-gray;
+            @include g.mq('md') {
+                width: 50%;
+            }
             &::before {
                 content: '';
                 position: absolute;
@@ -121,14 +150,20 @@
         }
         &-title {
             flex-shrink: 0;
-            width: 150px;
+            width: 120px;
+            @include g.mq('md') {
+                width: 150px;
+            }
         }
     }
     &__map {
         margin-bottom: 50px;
         &-iframe {
-            height: 300px;
+            height: 200px;
             background-color: g.$color-light-gray;
+            @include g.mq('md') {
+                height: 300px;
+            }
             iframe {
                 width: 100%;
                 height: 100%;
@@ -160,20 +195,30 @@
     &__related {
         position: relative;
         .slick-arrow {
-            top: -55px;
+            top: -50px;
+            @include g.mq('lg') {
+                top: -55px;
+            }
         }
         .slick-prev {
             left: auto;
-            right: 60px;
+            right: 45px;
         }
         .slick-next {
             right: 0;
         }
         .c-project__list {
-            margin-bottom: 0;
+            margin: 65px 0 0;
+            @include g.mq('sm') {
+                margin: 0;
+            }
         }
         .c-project__item {
+            width: 268px;
             margin-right: 20px;
+            &:nth-child(2n) {
+                margin-right: 20px;
+            }
         }
         .c-project__link {
             box-shadow: none;

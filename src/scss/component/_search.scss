@@ -7,7 +7,7 @@
         border-radius: 5px 5px 0 0;
         overflow: hidden;
         &-item {
-            width: 180px;
+            width: 140px;
             padding: 10px 10px;
             background-color: g.$color-white;
             color: g.$color-primary;
@@ -16,6 +16,13 @@
             line-height: 1.5em;
             cursor: pointer;
             transition: all 0.5s;
+            @include g.mq('lg') {
+                width: 180px;
+                &:hover {
+                    background-color: g.$color-orange;
+                    color: g.$color-white;
+                }
+            }
             &.active {
                 background-color: g.$color-orange;
                 color: g.$color-white;
@@ -23,24 +30,34 @@
         }
     }
     &__box {
-        padding: 20px 15px;
+        padding: 10px;
         background-color: g.$color-primary;
         border-radius: 0 5px 5px 5px;
+        @include g.mq('lg') {
+            padding: 20px 15px;
+        }
         &-input {
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             background-color: g.$color-white;
             border-radius: 5px;
+            overflow: hidden;
+            @include g.mq('sm') {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
         }
         &-filter {
         }
     }
     &__type {
         position: relative;
-        width: 180px;
-        border-right: 1px solid g.$color-gray;
+        border-bottom: 1px solid g.$color-gray;
+        @include g.mq('sm') {
+            width: 180px;
+            border-right: 1px solid g.$color-gray;
+            border-bottom: none;
+        }
         &-label {
             display: flex;
             align-items: center;
@@ -74,7 +91,9 @@
     }
     &__input {
         &-control {
-            width: calc(100% - 180px);
+            @include g.mq('sm') {
+                width: calc(100% - 180px);
+            }
         }
         width: 100%;
         padding: 10px 15px;
@@ -82,14 +101,9 @@
         outline: none;
     }
     &__submit {
-        position: absolute;
-        top: 50%;
-        right: 15px;
-        transform: translateY(-50%);
-        width: 100px;
+        width: 100%;
         padding: 8px 10px;
         background-color: g.$color-orange;
-        border-radius: 5px;
         border: none;
         outline: none;
         color: g.$color-white;
@@ -97,9 +111,20 @@
         font-weight: 500;
         text-align: center;
         line-height: 1.5em;
-        transition: all 0.5s;
-        &:hover {
-            background-color: g.$color-primary;
+        @include g.mq('sm') {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            width: 100px;
+            border-radius: 5px;
         }
+        @include g.mq('lg') {
+            transition: all 0.5s;
+            &:hover {
+                background-color: g.$color-primary;
+            }
+        }
+        
     }
 }

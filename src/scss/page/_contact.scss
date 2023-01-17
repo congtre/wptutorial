@@ -66,9 +66,9 @@
 }
 
 .contact-form {
-    padding: 0 0 70px;
+    padding: 70px 0;
     @include g.mq('lg') {
-        padding: 0 0 150px;
+        padding: 100px 0;
     }
     &__dl {
         padding: 20px 0;
@@ -127,8 +127,12 @@
         visibility: hidden;
         &-item {
             position: relative;
-            margin-bottom: 15px;
-            padding-left: 35px;
+            margin-bottom: 10px;
+            padding-left: 30px;
+            @include g.mq('lg') {
+                margin-bottom: 15px;
+                padding-left: 35px;
+            }
             &:last-child {
                 margin-bottom: 0;
             }
@@ -137,24 +141,34 @@
             &::before {
                 content: '';
                 position: absolute;
-                top: 0px;
+                top: 3px;
                 left: 0;
-                width: 25px;
-                height: 25px;
+                width: 18px;
+                height: 18px;
                 background-color: g.$color-light-gray;
                 border: 1px solid g.$color-gray;
                 border-radius: 100%;
+                @include g.mq('lg') {
+                    top: 0;
+                    width: 25px;
+                    height: 25px;
+                }
             }
             &::after {
                 content: '';
                 position: absolute;
                 top: 7px;
-                left: 7px;
-                width: 11px;
-                height: 11px;
+                left: 4px;
+                width: 10px;
+                height: 10px;
                 background-color: g.$color-primary;
                 border-radius: 100%;
                 opacity: 0;
+                @include g.mq('lg') {
+                    left: 7px;
+                    width: 11px;
+                    height: 11px;
+                }
             }
         }
         &:checked + .contact-form__radio-label::after {
@@ -174,12 +188,15 @@
     }
     &__input {
         width: 100%;
-        padding: 15px 20px;
+        padding: 10px 15px;
         background-color: g.$color-light-gray;
         border: none;
         outline: none;
         font-weight: 400;
         line-height: 1.5em;
+        @include g.mq('lg') {
+            padding: 15px 20px;
+        }
     }
     &__select {
         width: 50%;
@@ -200,7 +217,8 @@
                 transform: translateY(-50%) rotate(90deg);
                 width: 20px;
                 height: 20px;
-                background: url(../images/icon_arrow_black.svg) no-repeat center/contain;
+                background: url(../images/icon_arrow_black.svg) no-repeat
+                    center/contain;
                 pointer-events: none;
             }
         }

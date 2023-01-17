@@ -2,12 +2,22 @@
 
 .c-blog {
     &__list {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 70px;
+        margin-bottom: 40px;
+        @include g.mq('md') {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 70px;
+        }
     }
     &__article {
-        width: calc(33.33% - 30px);
+        margin-bottom: 50px;
+        @include g.mq('md') {
+            width: calc(33.33% - 30px);
+            margin-bottom: 0;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
         &-link {
             display: block;
             width: 100%;
@@ -15,8 +25,6 @@
             box-shadow: 0px 10px 50px -22px rgba(199, 199, 199, 0.8);
             border-radius: 10px;
             overflow: hidden;
-        }
-        &-image {
         }
         &-info {
             padding: 15px;
