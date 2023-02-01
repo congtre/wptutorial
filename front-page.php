@@ -7,8 +7,8 @@
             <h2 class="home-visual__heading">Website số 1 về bất động sản<br>Mua, bán, cho thuê nhà đất toàn quốc</h2>
             <div class="c-search">
                 <ul class="c-search__tab">
-                    <li class="c-search__tab-item active js-searchTab">Nhà đất bán</li>
-                    <li class="c-search__tab-item js-searchTab">Nhà đất cho thuê</li>
+                    <li class="c-search__tab-item active js-searchTab">Bán</li>
+                    <li class="c-search__tab-item js-searchTab">Cho thuê</li>
                 </ul>
                 <div class="c-search__box">
                     <div class="c-search__box-input">
@@ -307,7 +307,7 @@
                 </div>
             </div>
             <p class="c-button">
-                <a href="#" class="c-button__link">Xem thêm</a>
+                <a href="<?php echo home_url('/du-an'); ?>" class="c-button__link">Xem thêm</a>
             </p>
         </div>
     </section>
@@ -317,31 +317,22 @@
     <section class="home-category">
         <div class="container">
             <h2 class="c-heading">Danh mục dự án</h2>
+            <?php
+                $project_categories = get_terms(array( 
+                    'taxonomy' => 'project_cate',
+                    'hide_empty' => false,
+                ));
+            ?>
             <div class="home-category__list">
+                <?php foreach ($project_categories as $item): ?>
                 <div class="home-category__item">
-                    <a href="#" class="home-category__link">
-                        <p class="home-category__name">Căn hộ</p>
+                    <?php $background = get_field('project_cate_image', 'project_cate_'.$item->term_id); ?>
+                    <a href="<?php echo get_term_link($item->term_id); ?>" class="home-category__link" style="background: url(<?php echo $background; ?>) no-repeat center/cover">
+                        <p class="home-category__name"><?php echo $item->name; ?></p>
                         <p class="home-category__number">77</p>
                     </a>
                 </div>
-                <div class="home-category__item">
-                    <a href="#" class="home-category__link">
-                        <p class="home-category__name">Căn hộ</p>
-                        <p class="home-category__number">77</p>
-                    </a>
-                </div>
-                <div class="home-category__item">
-                    <a href="#" class="home-category__link">
-                        <p class="home-category__name">Căn hộ</p>
-                        <p class="home-category__number">77</p>
-                    </a>
-                </div>
-                <div class="home-category__item">
-                    <a href="#" class="home-category__link">
-                        <p class="home-category__name">Căn hộ</p>
-                        <p class="home-category__number">77</p>
-                    </a>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>

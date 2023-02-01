@@ -8,6 +8,11 @@ function theme_sources() {
     wp_enqueue_style('style', get_template_directory_uri().'/dist/css/style.css', array(), time());
 
     wp_enqueue_script('jquery-main', get_template_directory_uri().'/dist/vender/jquery-3.5.1.min.js', array(), '', 1);
+    
+    if (is_singular('project')) {
+        wp_enqueue_style('slick', get_template_directory_uri().'/dist/vender/slick/slick.css', array(), time());
+        wp_enqueue_script('slick-js', get_template_directory_uri().'/dist/vender/slick/slick.min.js', array(), '', 1);
+    }
     wp_enqueue_script('main-js', get_template_directory_uri().'/dist/js/main.js', array(), '', 1);
 }
 add_action('wp_enqueue_scripts', 'theme_sources');

@@ -11,3 +11,17 @@
         font-size: g.rem(30);
     }
 }
+
+.c-heading-archive {
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid g.$color-orange;
+    color: g.$color-orange;
+    font-size: g.rem(20);
+    font-weight: 500;
+    line-height: 1.5em;
+    @include g.mq('lg') {
+        margin-bottom: 100px;
+        font-size: g.rem(30);
+    }
+}

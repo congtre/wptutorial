@@ -1,7 +1,7 @@
 <p class="blog-article__sidebar-title">Danh mục</p>
 <?php
     $categories = get_terms(array( 
-        'taxonomy' => 'category',
+        'taxonomy' => 'project_cate',
         'hide_empty' => false,
     ));
 ?>

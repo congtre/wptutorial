@@ -16,10 +16,13 @@
             width: 250px;
         }
     }
-    &__list {
+    &__main {
         @include g.mq('lg') {
             width: calc(100% - 300px);
         }
+    }
+    &__list {
+        margin-bottom: 60px;
     }
     .c-project__list {
         margin-bottom: 70px;
@@ -27,7 +30,7 @@
     .c-project__item {
         max-width: 100%;
         width: 100%;
-        margin-right: 0;
+        margin-right: 0 !important;
         &:last-child {
             margin-bottom: 0;
         }
@@ -42,6 +45,10 @@
             width: 280px;
         }
         img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 100%;
             height: 100%;
             object-fit: cover;

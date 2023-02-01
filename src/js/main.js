@@ -210,3 +210,5 @@ $(function () {
 
     obj.init();
 });
+
+// validate an email with regex and comment each line
