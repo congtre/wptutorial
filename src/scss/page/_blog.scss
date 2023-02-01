@@ -5,6 +5,19 @@
     @include g.mq('lg') {
         padding: 100px 0;
     }
+    &__subject {
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid g.$color-orange;
+        color: g.$color-orange;
+        font-size: g.rem(20);
+        font-weight: 500;
+        line-height: 1.5em;
+        @include g.mq('lg') {
+            margin-bottom: 100px;
+            font-size: g.rem(30);
+        }
+    }
     &__wrap {
         @include g.mq('lg') {
             display: flex;
@@ -21,10 +34,16 @@
             width: 250px;
         }
     }
+    &__list {
+        margin-bottom: 60px;
+    }
     &__item {
         margin-bottom: 30px;
         padding-bottom: 30px;
         border-bottom: 1px solid g.$color-light-gray;
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
     &__link {
         @include g.mq('lg') {
@@ -81,7 +100,9 @@
     }
     &__sidebar {
         &-title {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed g.$color-gray;
             font-size: g.rem(20);
             font-weight: 500;
             line-height: 1.5em;
@@ -125,6 +146,9 @@
 .blog-detail {
     &__title {
         margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid g.$color-gray;
+        color: g.$color-orange;
         font-size: g.rem(20);
         font-weight: 500;
         line-height: 1.5em;
@@ -136,6 +160,9 @@
     &__content {
         margin-bottom: 70px;
     }
+    .blog-article__meta {
+        margin-bottom: 20px;
+    }
     &__related {
         &-title {
             margin-bottom: 30px;
@@ -146,11 +173,16 @@
             line-height: 1.5em;
         }
         .c-blog__list {
+            justify-content: flex-start;
             margin-bottom: 0;
         }
         .c-blog__article {
             @include g.mq('md') {
                 width: calc(33.33% - 15px);
+                margin-right: calc(45px / 2);
+                &:last-child {
+                    margin-right: 0;
+                }
             }
         }
     }

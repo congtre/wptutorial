@@ -39,7 +39,6 @@
         &-input {
             background-color: g.$color-white;
             border-radius: 5px;
-            overflow: hidden;
             @include g.mq('sm') {
                 position: relative;
                 display: flex;
@@ -82,11 +81,60 @@
         }
         &-list {
             position: absolute;
-            top: 100%;
+            top: calc(100% + 10px);
             left: 0;
+            width: 300px;
+            background-color: g.$color-white;
+            border-radius: 5px;
+            box-shadow: 0px 10px 50px -22px rgba(199, 199, 199, 0.8);
             opacity: 0;
             visibility: hidden;
-            transition: all 0.5s;
+            cursor: pointer;
+            overflow: hidden;
+            &.active {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        &-item {
+            position: relative;
+            padding: 10px 15px;
+            border-bottom: 1px solid g.$color-light-gray;
+            @include g.mq('lg') {
+                transition: all 0.5s;
+                &:hover {
+                    background-color: g.$color-light-gray;
+                }
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: 15px;
+                transform: translateY(-50%);
+                width: 20px;
+                height: 20px;
+                border: 1px solid g.$color-orange;
+                border-radius: 3px;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                top: 16px;
+                right: 18px;
+                width: 15px;
+                height: 15px;
+                background: url(../images/icon_check.svg) no-repeat
+                    center/contain;
+                opacity: 0;
+                visibility: hidden;
+            }
+            &.active {
+                &::after {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
         }
     }
     &__input {
@@ -125,6 +173,5 @@
                 background-color: g.$color-primary;
             }
         }
-        
     }
 }

@@ -163,6 +163,40 @@ $(function () {
                 });
             }
         },
+        search: function () {
+            const searchSelectLabel = $('.js-searchSelectLabel');
+            const searchOption = $('.js-searchOption');
+            const searchOptionAll = $('.js-searchOptionAll');
+            const searchTab = $('.js-searchTab');
+
+            if (searchSelectLabel.length) {
+                searchSelectLabel.click(function () {
+                    const searchSelectList = $(this)
+                        .parent()
+                        .find('.js-searchSelectList');
+                    searchSelectList.toggleClass('active');
+                });
+
+                searchOption.click(function () {
+                    const self = $(this);
+                    if (self.hasClass('js-searchOptionAll')) {
+                        if (!self.hasClass('active')) {
+                            searchOption.addClass('active');
+                        } else {
+                            searchOption.removeClass('active');
+                        }
+                    } else {
+                        searchOptionAll.removeClass('active');
+                        self.toggleClass('active');
+                    }
+                });
+
+                searchTab.click(function () {
+                    searchTab.removeClass('active');
+                    $(this).addClass('active');
+                });
+            }
+        },
         init: function () {
             this.toTop();
             this.smoothScroll();
@@ -170,6 +204,7 @@ $(function () {
             this.animation();
             this.events();
             this.slideProjectDetail();
+            this.search();
         },
     };
 

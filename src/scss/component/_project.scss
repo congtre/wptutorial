@@ -36,6 +36,12 @@
         box-shadow: 0px 10px 50px -22px rgba(199, 199, 199, 0.8);
         border-radius: 10px;
         overflow: hidden;
+        transition: all 0.5s;
+        @include g.mq('lg') {
+            &:hover {
+                opacity: 0.7;
+            }
+        }
     }
     &__image {
         position: relative;

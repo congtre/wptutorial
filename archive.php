@@ -1,3 +1,8 @@
+<?php
+$wp_object = get_queried_object();
+$category_id = $wp_object->term_id;
+$category_name = $wp_object->name;
+?>
 
 <?php get_header(); ?>
 <!-- ↓↓ main ↓↓ -->
@@ -7,20 +12,21 @@
             <h1 class="blog-article__subject">Tin tức</h1>
             <div class="blog-article__wrap">
                 <div class="blog-article__main">
+                    <?php
+                        $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+                        $args = array(
+                            'post_type' => 'post',
+                            'posts_per_page' => 2,
+                            'paged' => $paged,
+                            'post_status' => 'publish',
+                            'orderby' => 'ID',
+                            'order' => 'DESC',
+                            'cat' => $category_id,
+                        );
+                        $post_query = new WP_Query($args);
+                    ?>
+                    <?php if ($post_query->have_posts()): ?>
                     <div class="blog-article__list">
-                        <?php
-                            $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-                            $args = array(
-                                'post_type' => 'post',
-                                'posts_per_page' => 2,
-                                'paged' => $paged,
-                                'post_status' => 'publish',
-                                'orderby' => 'ID',
-                                'order' => 'DESC',
-                            );
-                            $post_query = new WP_Query($args);
-                        ?>
-                        <?php if ($post_query->have_posts()): ?>
                         <?php while ($post_query->have_posts()) : $post_query->the_post(); ?>
                         <div class="blog-article__item">
                             <a href="<?php the_permalink(); ?>" class="blog-article__link">
@@ -42,8 +48,10 @@
                             </a>
                         </div>
                         <?php endwhile; ?>
-                        <?php endif; ?>
                     </div>
+                    <?php else: ?>
+                    <?php get_template_part('template/content-no-results'); ?>    
+                    <?php endif; ?>
                     <div class="pagination">
                         <?php wp_pagenavi(array('query' => $post_query)); ?>
                     </div>
