@@ -81,6 +81,11 @@
             font-size: g.rem(14);
             font-weight: 500;
             line-height: 1.5em;
+            @include g.mq('md') {
+                &:hover {
+                    color: g.$color-white;
+                }
+            }
         }
     }
     &__social {
@@ -89,6 +94,13 @@
             margin-right: 5px;
             &:last-child {
                 margin-right: 0;
+            }
+            @include g.mq('md') {
+                &:hover {
+                    g {
+                        fill: g.$color-white;
+                    }
+                }
             }
         }
         svg {

@@ -21,3 +21,28 @@ function theme_features() {
     add_theme_support('post-thumbnails');
 }
 add_action('after_setup_theme', 'theme_features');
+
+function cty_register_nav_menu(){
+    register_nav_menus( array(
+        'primary_menu' => 'Primary Menu',
+        'footer_menu'  => 'Footer Menu',
+    ));
+}
+add_action('init', 'cty_register_nav_menu');
+
+function clear_nav_menu_item_id($id, $item, $args) {
+    return "";
+}
+add_filter('nav_menu_item_id', 'clear_nav_menu_item_id', 10, 3);
+
+function clear_nav_menu_item_class($classes, $item, $args) {
+    $classes = ['header__menu-item'];
+    return $classes;
+}
+add_filter('nav_menu_css_class', 'clear_nav_menu_item_class', 10, 3);
+
+function cty_nav_menu_submenu_css_class($classes) {
+    $classes = ['header__menu-sub'];
+    return $classes;
+}
+add_filter('nav_menu_submenu_css_class', 'cty_nav_menu_submenu_css_class');

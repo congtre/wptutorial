@@ -141,12 +141,14 @@
                 ));
             ?>
             <div class="home-category__list">
-                <?php foreach ($project_categories as $item): ?>
+                <?php foreach ($project_categories as $term): ?>
                 <div class="home-category__item">
-                    <?php $background = get_field('project_cate_image', 'project_cate_'.$item->term_id); ?>
-                    <a href="<?php echo get_term_link($item->term_id); ?>" class="home-category__link" style="background: url(<?php echo $background; ?>) no-repeat center/cover">
-                        <p class="home-category__name"><?php echo $item->name; ?></p>
-                        <p class="home-category__number">77</p>
+                    <?php $background = get_field('project_cate_image', 'project_cate_'.$term->term_id); ?>
+                    <a href="<?php echo get_term_link($term->term_id); ?>" class="home-category__link" style="background: url(<?php echo $background; ?>) no-repeat center/cover">
+                        <p class="home-category__name"><?php echo $term->name; ?></p>
+                        <?php if ($term->count > 0): ?>
+                        <p class="home-category__number"><?php echo $term->count; ?></p>
+                        <?php endif; ?>
                     </a>
                 </div>
                 <?php endforeach; ?>

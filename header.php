@@ -21,7 +21,7 @@
                 </a>
             </h1>
             <div class="header__wrap">
-                <nav class="header__nav">
+                <!-- <nav class="header__nav">
                     <ul class="header__menu">
                         <li class="header__menu-item">
                             <a href="#" class="header__menu-link">Dự án</a>
@@ -41,7 +41,16 @@
                             <a href="#" class="header__menu-link">Liên hệ</a>
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
+                <?php
+                    wp_nav_menu(array(
+                        'menu_class'        => "header__menu",
+                        'menu_id'           => "header__menu",
+                        'container'         => "nav",
+                        'container_class'   => "header__nav",
+                        'theme_location'    => 'primary_menu'
+                    ));
+                ?>
                 <div class="header__user">
                     <a href="#" class="header__user-link">Đăng nhập</a>
                     <div class="header__user-devide"></div>
