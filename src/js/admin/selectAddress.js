@@ -3,9 +3,12 @@ jQuery(async function ($) {
     const selectDistrict = $('.js_district').find('select');
     const selectWard = $('.js_ward').find('select');
 
-    selectProvince.prepend('<option selected>--</option>');
-    selectDistrict.empty().prepend('<option selected>--</option>');
-    selectWard.empty().prepend('<option selected>--</option>');
+    // Check if page not edit
+    if (!window.location.search.includes('action=edit')) {
+        selectProvince.prepend('<option selected>--</option>');
+        selectDistrict.empty().prepend('<option selected>--</option>');
+        selectWard.empty().prepend('<option selected>--</option>');
+    }
 
     const getData = async () => {
         try {

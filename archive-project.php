@@ -62,7 +62,7 @@
                                             </li>
                                             <li class="c-project__ultity-item">
                                                 <span class="c-project__ultity-title">Mức giá</span>
-                                                <span class="c-project__ultity-info"><?php echo number_format_i18n($project_ultity['project_ultity_price']); ?> triệu/tháng</span>
+                                                <span class="c-project__ultity-info"><?php echo $project_ultity['project_ultity_price']; ?></span>
                                             </li>
                                         </ul>
                                         <div class="c-project__footer">

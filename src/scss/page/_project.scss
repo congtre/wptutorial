@@ -31,18 +31,17 @@
         max-width: 100%;
         width: 100%;
         margin-right: 0 !important;
+        @include g.mq('md') {
+            display: flex;
+        }
         &:last-child {
             margin-bottom: 0;
-        }
-    }
-    .c-project__link {
-        @include g.mq('sm') {
-            display: flex;
         }
     }
     .c-project__image {
         @include g.mq('sm') {
             width: 280px;
+            height: auto;
         }
         img {
             position: absolute;

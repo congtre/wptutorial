@@ -4,7 +4,7 @@
 <main class="main">
     <section class="blog-article">
         <div class="container">
-            <h1 class="blog-article__subject">Tin tức</h1>
+            <h1 class="c-heading-archive">Tin tức</h1>
             <div class="blog-article__wrap">
                 <div class="blog-article__main">
                     <div class="blog-article__list">
