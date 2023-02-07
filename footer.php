@@ -1,5 +1,5 @@
-<!-- ↓↓ footer ↓↓ -->
-<footer class="footer">
+        <!-- ↓↓ footer ↓↓ -->
+        <footer class="footer">
             <div class="container">
                 <div class="footer__wrap">
                     <div class="footer__col">
@@ -9,11 +9,11 @@
                                 <span class="footer__logo-text">Batdongsan</span>
                             </a>
                         </div>
-                        <p class="footer__desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque laboriosam repellendus asperiores nesciunt inventore aut cum, mollitia illo magnam facere iure quis, iusto excepturi perspiciatis, non reiciendis tenetur nulla? Odit?</p>
+                        <p class="footer__desc">Kênh thông tin số 1 về bất động sản tại Việt Nam. Mang đến nguồn thông tin mua bán và cho thuê nhà đất, văn phòng, chung cư... Cập nhật tin tức bất động sản nhanh nhất và chính xác nhất.</p>
                     </div>
                     <div class="footer__col">
                         <p class="footer__title">Sitemap</p>
-                        <ul class="footer__menu">
+                        <!-- <ul class="footer__menu">
                             <li class="footer__menu-item">
                                 <a href="#" class="footer__menu-link">Dự án</a>
                             </li>
@@ -29,25 +29,31 @@
                             <li class="footer__menu-item">
                                 <a href="#" class="footer__menu-link">Liên hệ</a>
                             </li>
-                        </ul>
+                        </ul> -->
+                        <?php
+                            wp_nav_menu(array(
+                                'menu_class'        => "footer__menu",
+                                'menu_id'           => "footer__menu",
+                                'container'         => "div",
+                                'container_class'   => "footer__menu-wrap",
+                                'theme_location'    => 'footer_menu'
+                            ));
+                        ?>
                     </div>
                     <div class="footer__col">
                         <p class="footer__title">Contact</p>
                         <ul class="footer__menu">
                             <li class="footer__menu-item">
-                                <a href="#" class="footer__menu-link">info@findhouse.com</a>
+                                <span class="footer__menu-link">info@badongsan.com</span>
                             </li>
                             <li class="footer__menu-item">
-                                <a href="#" class="footer__menu-link">Collins Street West, Victoria</a>
+                                <span class="footer__menu-link">Tầng 3, Tháp B tòa nhà Viettel Complex, 285 Cách Mạng Tháng Tám, Phường 12, Quận 10, TP. Hồ Chí Minh</span>
                             </li>
                             <li class="footer__menu-item">
-                                <a href="#" class="footer__menu-link">8007, Australia.</a>
+                                <span class="footer__menu-link">+84 246-345-0699</span>
                             </li>
                             <li class="footer__menu-item">
-                                <a href="#" class="footer__menu-link">+1 246-345-0699</a>
-                            </li>
-                            <li class="footer__menu-item">
-                                <a href="#" class="footer__menu-link">+1 246-345-0695</a>
+                                <span class="footer__menu-link">+84 246-345-0695</span>
                             </li>
                         </ul>
                     </div>
@@ -66,7 +72,7 @@
                         </ul>
                     </div>
                 </div>
-                <p class="footer__copy">© 2023 Find House. Made with love.</p>
+                <p class="footer__copy">© 2023 Batdongsan. Made by CTYoung.</p>
                 <div class="totop"></div>
             </div>
         </footer>

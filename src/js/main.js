@@ -46,7 +46,7 @@ $(function () {
         gnavi: function () {
             $('.hamburger').click(function () {
                 $(this).toggleClass('active');
-                $('.header__nav').toggleClass('active');
+                $('.header__wrap').toggleClass('active');
             });
 
             $(window).on('scroll load', function () {

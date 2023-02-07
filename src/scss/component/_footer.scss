@@ -60,7 +60,7 @@
         color: g.$color-gray;
         font-size: g.rem(14);
         font-weight: 500;
-        line-height: 1.5em;
+        line-height: 1.7em;
     }
     &__title {
         margin: 30px 0 20px;
@@ -72,19 +72,21 @@
     &__menu {
         &-item {
             margin-bottom: 5px;
+            line-height: 1.5em;
             &:last-child {
                 margin-bottom: 0;
             }
         }
-        &-link {
+        a,
+        span {
             color: g.$color-gray;
             font-size: g.rem(14);
             font-weight: 500;
             line-height: 1.5em;
+        }
+        a:hover {
             @include g.mq('md') {
-                &:hover {
-                    color: g.$color-white;
-                }
+                color: g.$color-white;
             }
         }
     }

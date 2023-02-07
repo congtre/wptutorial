@@ -1,9 +1,15 @@
+<?php
+$wp_object = get_queried_object();
+$category_id = $wp_object->term_id;
+$category_name = $wp_object->name;
+?>
+
 <?php get_header(); ?>
 <!-- ↓↓ main ↓↓ -->
 <main class="main">
     <section class="project-article">
         <div class="container">
-            <h1 class="c-heading-archive">Dự án</h1>
+            <h1 class="c-heading-archive"><?php echo $category_name; ?></h1>
             <div class="project-article__wrap">
                 <div class="project-article__main">
                     <?php
@@ -15,6 +21,12 @@
                             'post_status' => 'publish',
                             'orderby' => 'ID',
                             'order' => 'DESC',
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'project_cate',
+                                    'terms' => $category_id
+                                )
+                            )
                         );
                         $post_query = new WP_Query($args);
                     ?>

@@ -1,82 +1,16 @@
 @use '../global/' as g;
 
-.contact-convert {
-    padding: 70px 0 40px;
-    @include g.mq('lg') {
-        padding: 150px 0 100px;
-    }
-    &__box {
-        padding: 50px 30px;
-        background-color: g.$color-light-gray;
-        @include g.mq('md') {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 70px;
-        }
-    }
-    &__title {
-        margin-bottom: 30px;
-        font-size: g.rem(26);
-        font-weight: 500;
-        text-align: center;
-        line-height: 1.5em;
-        @include g.mq('lg') {
-            margin-bottom: 0;
-            font-size: g.rem(20);
-            text-align: left;
-        }
-    }
-    &__tel {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        &-link {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: g.rem(30);
-            font-weight: 500;
-            line-height: 1.5em;
-            letter-spacing: 0.05em;
-            @include g.mq('lg') {
-                font-size: g.rem(40);
-            }
-            &::before {
-                content: '';
-                position: relative;
-                top: -2px;
-                display: inline-flex;
-                width: 30px;
-                height: 30px;
-                margin-right: 5px;
-                background: url(../images/icon_iphone_black.svg) no-repeat
-                    center/contain;
-                @include g.mq('lg') {
-                    width: 40px;
-                    height: 40px;
-                }
-            }
-        }
-        &-time {
-            font-weight: 500;
-        }
-    }
-}
-
-.contact-form {
-    padding: 70px 0;
+.contact {
+    padding: 60px 0;
     @include g.mq('lg') {
         padding: 100px 0;
     }
+}
+.contact-form {
     &__dl {
         padding: 20px 0;
         @include g.mq('md') {
             display: flex;
-        }
-        @include g.mq('lg') {
-            padding: 20px 50px;
         }
     }
     &__dt {
@@ -238,31 +172,26 @@
         outline: none;
         border: none;
     }
-    &__agree {
-        margin: 50px 0;
-        text-align: center;
-        @include g.mq('lg') {
-            margin: 100px 0;
+    &__check {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        &:checked + .contact-form__check-label::after {
+            opacity: 1;
         }
-        &-check {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            visibility: hidden;
-            &:checked + .contact-form__agree-label::after {
-                opacity: 1;
+        &-item {
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 0;
             }
         }
         &-label {
             position: relative;
             padding-left: 35px;
             font-size: g.rem(16);
-            font-weight: 500;
             line-height: 1.5em;
-            @include g.mq('lg') {
-                font-size: g.rem(18);
-            }
             &::before {
                 content: '';
                 position: absolute;
@@ -283,6 +212,20 @@
                 background: url(../images/icon_check.svg) no-repeat
                     center/contain;
                 opacity: 0;
+            }
+        }
+    }
+    &__agree {
+        margin: 50px 0;
+        text-align: center;
+        @include g.mq('lg') {
+            margin: 70px 0;
+        }
+        .contact-form__check-label {
+            font-weight: 500;
+            font-size: g.rem(16);
+            @include g.mq('lg') {
+                font-size: g.rem(18);
             }
         }
     }
@@ -307,5 +250,137 @@
                 background-color: g.$color-orange;
             }
         }
+    }
+}
+
+.contactForm7 {
+    .wpcf7-form-control-wrap {
+        display: block;
+    }
+    .contact-form {
+        &__check {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            .wpcf7-list-item {
+                display: block;
+                margin: 0 0 10px 0;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                &-label {
+                    position: relative;
+                    padding-left: 35px;
+                    font-size: g.rem(14);
+                    line-height: 1.5em;
+                    @include g.mq('lg') {
+                        font-size: g.rem(16);
+                    }
+                    cursor: pointer;
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 0px;
+                        left: 0;
+                        width: 22px;
+                        height: 22px;
+                        background-color: g.$color-light-gray;
+                        border: 1px solid g.$color-gray;
+                    }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 2px;
+                        left: 2px;
+                        width: 18px;
+                        height: 18px;
+                        background: url(../images/icon_check.svg) no-repeat
+                            center/contain;
+                        opacity: 0;
+                    }
+                }
+            }
+            input {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                visibility: hidden;
+                &:checked + .wpcf7-list-item-label::after {
+                    opacity: 1;
+                }
+            }
+        }
+        &__radio {
+            position: static;
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+            .wpcf7-list-item {
+                margin: 0 20px 0 0;
+                display: block;
+                &-label {
+                    position: relative;
+                    padding-left: 35px;
+                    font-size: g.rem(14);
+                    line-height: 1.5em;
+                    cursor: pointer;
+                    @include g.mq('lg') {
+                        font-size: g.rem(16);
+                    }
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 3px;
+                        left: 0;
+                        width: 18px;
+                        height: 18px;
+                        background-color: g.$color-light-gray;
+                        border: 1px solid g.$color-gray;
+                        border-radius: 100%;
+                        @include g.mq('lg') {
+                            top: 0;
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 7px;
+                        left: 4px;
+                        width: 10px;
+                        height: 10px;
+                        background-color: g.$color-primary;
+                        border-radius: 100%;
+                        opacity: 0;
+                        @include g.mq('lg') {
+                            left: 7px;
+                            width: 11px;
+                            height: 11px;
+                        }
+                    }
+                }
+            }
+            input {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                visibility: hidden;
+                &:checked + .wpcf7-list-item-label::after {
+                    opacity: 1;
+                }
+            }
+        }
+        &__check-agree {
+            margin: 70px 0;
+            text-align: center;
+        }
+    }
+    .wpcf7-spinner {
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 20px 0 0;
     }
 }

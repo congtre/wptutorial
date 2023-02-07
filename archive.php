@@ -9,7 +9,7 @@ $category_name = $wp_object->name;
 <main class="main">
     <section class="blog-article">
         <div class="container">
-            <h1 class="c-heading-archive">Tin tức</h1>
+            <h1 class="c-heading-archive"><?php echo $category_name; ?></h1>
             <div class="blog-article__wrap">
                 <div class="blog-article__main">
                     <?php

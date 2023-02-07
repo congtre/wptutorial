@@ -1,6 +1,7 @@
 <?php
 
 include('inc/dataAddress.php');
+include('inc/themeSettings.php');
 
 function theme_sources() { 
     wp_deregister_script('jquery'); // Remove a registered script
@@ -37,6 +38,9 @@ add_filter('nav_menu_item_id', 'clear_nav_menu_item_id', 10, 3);
 
 function clear_nav_menu_item_class($classes, $item, $args) {
     $classes = ['header__menu-item'];
+    if ($args->theme_location === 'footer_menu') {
+        $classes = ['footer__menu-item'];
+    }
     return $classes;
 }
 add_filter('nav_menu_css_class', 'clear_nav_menu_item_class', 10, 3);
@@ -46,3 +50,10 @@ function cty_nav_menu_submenu_css_class($classes) {
     return $classes;
 }
 add_filter('nav_menu_submenu_css_class', 'cty_nav_menu_submenu_css_class');
+
+function remove_wpcf7_p_tags($content) {
+    $content = preg_replace( '/(<p>)*([\s\S]+?)(<\/p>)*/', '$2', $content );
+    return $content;
+}
+add_filter('wpcf7_autop_or_not', '__return_false');
+add_filter('wpcf7_form_elements', 'remove_wpcf7_p_tags');

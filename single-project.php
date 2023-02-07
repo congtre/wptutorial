@@ -37,7 +37,7 @@
                         $project_info_address_ward_value = $project_info_address_ward['value'];
                         $project_info_address_ward_label = $project_info_address_ward['choices'][$project_info_address_ward_value];
                     ?>
-                    <p class="project-detail__address"><?php echo $project_info_address_province_label.'/'.$project_info_address_district_label.'/'.$project_info_address_ward_label; ?></p>
+                    <p class="project-detail__address"><?php echo $project_info_address_province_label.'/'.$project_info_address_district_label.'/'.$project_info_address_ward_label.'/'.get_field('project_info_address')['project_info_address_detail']; ?></p>
                     
                     <?php if (the_field('project_info_address_project_info_address_detail')): ?>
                     <p class="project-detail__address"><?php the_field('project_info_address_project_info_address_detail'); ?></p>
@@ -95,7 +95,6 @@
                         </p>
                     </div>
                     <div class="project-detail__related">
-                        <p class="project-detail__title">Bất động sản dành cho bạn</p>
                         <?php
                             $category = get_the_terms(get_the_ID(), 'project_cate')[0];
                             $args = array(
@@ -115,6 +114,7 @@
                             $post_query = new WP_Query($args);
                         ?>
                         <?php if ($post_query->have_posts()): ?>
+                            <p class="project-detail__title">Bất động sản dành cho bạn</p>
                         <div class="c-project__list js-relatedProjectDetail">
                             <?php while ($post_query->have_posts()) : $post_query->the_post(); ?>
                             <?php
