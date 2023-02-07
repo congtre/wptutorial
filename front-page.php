@@ -1,3 +1,9 @@
+<?php
+    $project_categories = get_terms(array( 
+        'taxonomy' => 'project_cate',
+        'hide_empty' => false,
+    ));
+?>
 <?php get_header(); ?>
 <!-- ↓↓ main ↓↓ -->
 <main class="main">
@@ -24,18 +30,12 @@
                                     <span class="c-search__type-item-icon"></span>
                                     <span class="c-search__type-item-text">Tất cả nhà đất</span>
                                 </li>
-                                <li class="c-search__type-item js-searchOption" data-type="1">
+                                <?php foreach($project_categories as $item) : ?>
+                                <li class="c-search__type-item js-searchOption" data-type="<?php echo $item->term_id; ?>">
                                     <span class="c-search__type-item-icon"></span>
-                                    <span class="c-search__type-item-text">Căn hộ chung cư</span>
+                                    <span class="c-search__type-item-text"><?php echo $item->name; ?></span>
                                 </li>
-                                <li class="c-search__type-item js-searchOption" data-type="2">
-                                    <span class="c-search__type-item-icon"></span>
-                                    <span class="c-search__type-item-text">Các loại nhà bán</span>
-                                </li>
-                                <li class="c-search__type-item js-searchOption" data-type="3">
-                                    <span class="c-search__type-item-icon"></span>
-                                    <span class="c-search__type-item-text">Các loại đất bán</span>
-                                </li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                         <div class="c-search__input-control">
@@ -134,12 +134,6 @@
     <section class="home-category">
         <div class="container">
             <h2 class="c-heading">Danh mục dự án</h2>
-            <?php
-                $project_categories = get_terms(array( 
-                    'taxonomy' => 'project_cate',
-                    'hide_empty' => false,
-                ));
-            ?>
             <div class="home-category__list">
                 <?php foreach ($project_categories as $term): ?>
                 <div class="home-category__item">
