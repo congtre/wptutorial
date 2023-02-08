@@ -1,21 +1,43 @@
 <?php get_header(); ?>
 <section class="project-article">
     <div class="container">
-        <h1 class="c-heading-archive">Dự án</h1>
+        <?php
+            $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+            $search_query = get_search_query();
+            $type = $_GET['type'];
+            $cate = $_GET['cate'];
+            
+            $args = array(
+                'post_type' => 'project',
+                'posts_per_page' => 10,
+                'paged' => $paged,
+                'post_status' => 'publish',
+                'orderby' => 'ID',
+                'order' => 'DESC',
+                's' => $search_query,
+                'meta_key' => 'project_type',
+                'meta_value' => $type,
+            );
+
+            if ($cate !== 'all') {
+                $cate_array = explode(',', $cate);
+                $query = [
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'project_cate',
+                            'terms' => $cate_array
+                        )
+                    )
+                ];
+
+                $args = array_merge($args, $query);
+            }
+
+            $post_query = new WP_Query($args);
+        ?>
+        <h1 class="c-heading-archive">Kết quả tìm kiếm (<?php echo $post_query->found_posts; ?>)</h1>
         <div class="project-article__wrap">
             <div class="project-article__main">
-                <?php
-                    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-                    $args = array(
-                        'post_type' => 'project',
-                        'posts_per_page' => 10,
-                        'paged' => $paged,
-                        'post_status' => 'publish',
-                        'orderby' => 'ID',
-                        'order' => 'DESC',
-                    );
-                    $post_query = new WP_Query($args);
-                ?>
                 <?php if ($post_query->have_posts()): ?>
                 <div class="project-article__list">
                     <div class="c-project__list">
@@ -66,7 +88,7 @@
                                 </ul>
                                 <div class="c-project__footer">
                                     <p class="c-project__time"><?php echo get_the_date(get_option('date-format')); ?></p>
-                                    <p class="c-project__like js-buttonLike" data-id="<?php the_ID(); ?>" data-title="<?php the_title(); ?>"></p>
+                                    <p class="c-project__like"></p>
                                 </div>
                             </div>
                         </div>  

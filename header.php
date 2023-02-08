@@ -63,3 +63,23 @@
             </div>
         </header>
         <!-- ↑↑ headear ↑↑ -->
+        <!-- ↓↓ main ↓↓ -->
+        <main class="main">
+            <!-- ↓↓ visual ↓↓ -->
+            <?php if (is_front_page()): ?>
+            <section class="home-visual">
+                <div class="container">
+                    <h2 class="home-visual__heading">Website số 1 về bất động sản<br>Mua, bán, cho thuê nhà đất toàn quốc</h2>
+                    <div class="c-search">
+                        <?php get_search_form(); ?>
+                    </div>
+                </div>
+            </section>
+            <?php else: ?>
+            <div class="sub-visual">
+                <div class="c-search c-search--sub">
+                    <?php get_search_form(); ?>
+                </div>
+            </div>
+            <?php endif; ?>
+            <!-- ↑↑ visual ↑↑ -->

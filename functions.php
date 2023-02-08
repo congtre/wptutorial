@@ -57,3 +57,35 @@ function remove_wpcf7_p_tags($content) {
 }
 add_filter('wpcf7_autop_or_not', '__return_false');
 add_filter('wpcf7_form_elements', 'remove_wpcf7_p_tags');
+
+
+
+
+
+
+add_action('wp_ajax_get_posts_by_local_storage', 'get_posts_by_local_storage');
+add_action('wp_ajax_nopriv_get_posts_by_local_storage', 'get_posts_by_local_storage');
+
+function get_posts_by_local_storage() {
+    var_dump(111);die();
+    $objectsInLocalStorage = json_decode($_POST['objects_in_local_storage']) ?: [];
+    $postIds = wp_list_pluck($objectsInLocalStorage, 'id');
+
+    $query = new WP_Query([
+        'post_type' => 'post',
+        'post__in' => $postIds,
+        'posts_per_page' => -1,
+    ]);
+
+    $posts = [];
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            // format the post data and add it to the $posts array
+        }
+        wp_reset_postdata();
+    }
+
+    wp_send_json_success($posts);
+    wp_die();
+}

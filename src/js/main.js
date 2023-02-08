@@ -179,6 +179,8 @@ $(function () {
 
                 searchOption.click(function () {
                     const self = $(this);
+                    let cate = ['all'];
+
                     if (self.hasClass('js-searchOptionAll')) {
                         if (!self.hasClass('active')) {
                             searchOption.addClass('active');
@@ -188,14 +190,91 @@ $(function () {
                     } else {
                         searchOptionAll.removeClass('active');
                         self.toggleClass('active');
+                        cate = [];
+                        searchOption.each(function (index, el) {
+                            const elItem = $(el);
+                            if (elItem.hasClass('active')) {
+                                cate.push(elItem.data('cate'));
+                            }
+                        });
+
+                        if (!searchOption.hasClass('active')) {
+                            cate = ['all'];
+                        }
                     }
+
+                    $('input[name="cate"]').val(cate);
                 });
 
                 searchTab.click(function () {
                     searchTab.removeClass('active');
                     $(this).addClass('active');
+
+                    const type = $(this).data('type');
+                    $('input[name="type"]').val(type);
                 });
             }
+        },
+        buttonLike: function () {
+            const _this = this;
+            const buttonLike = $('.js-buttonLike');
+
+            buttonLike.click(function () {
+                const self = $(this);
+                const id = self.data('id');
+                const title = self.data('title');
+                _this.toggleProjectToLocalStorage(id, title);
+                self.toggleClass('active');
+            });
+        },
+        toggleProjectToLocalStorage: function (id, title) {
+            const project = { id, title };
+            let projectInLocalStorage =
+                JSON.parse(localStorage.getItem('projectLike')) || [];
+            let isExisted = false;
+            let indexToRemove;
+
+            projectInLocalStorage.forEach((item, index) => {
+                if (item.id === id) {
+                    isExisted = true;
+                    indexToRemove = index;
+                }
+            });
+
+            if (isExisted) {
+                projectInLocalStorage.splice(indexToRemove, 1);
+            } else {
+                projectInLocalStorage.push(project);
+            }
+
+            localStorage.setItem(
+                'projectLike',
+                JSON.stringify(projectInLocalStorage)
+            );
+        },
+        loadButtonLike: function () {
+            $(window).on('load', function () {
+                const projectInLocalStorage =
+                    JSON.parse(localStorage.getItem('projectLike')) || [];
+                projectInLocalStorage.forEach((item) => {
+                    const element = $(`.js-buttonLike[data-id=${item.id}]`);
+                    if (element) {
+                        element.addClass('active');
+                    }
+                });
+            });
+
+            const projectInLocalStorage =
+                JSON.stringify(localStorage.getItem('projectLike')) || [];
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:3000/00_jweb/00_dcyoung/wptutorial/wp-admin/admin-ajax.php',
+                data: `objects_in_local_storage=${projectInLocalStorage}`,
+                success: function (response) {
+                    console.log(111);
+                },
+            });
         },
         init: function () {
             this.toTop();
@@ -205,10 +284,10 @@ $(function () {
             this.events();
             this.slideProjectDetail();
             this.search();
+            this.buttonLike();
+            this.loadButtonLike();
         },
     };
 
     obj.init();
 });
-
-// validate an email with regex and comment each line

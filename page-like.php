@@ -1,10 +1,17 @@
 <?php get_header(); ?>
-<section class="project-article">
+<section class="project-article project-like">
+    <input type="hidden" id="hidden-input" name="objects_in_local_storage">
     <div class="container">
-        <h1 class="c-heading-archive">Dự án</h1>
+        <h1 class="c-heading-archive">Dự án đã lưu</h1>
         <div class="project-article__wrap">
             <div class="project-article__main">
                 <?php
+                    $objectsInLocalStorage = json_decode($_POST['objects_in_local_storage']) ?: [];
+                    $postIds = wp_list_pluck($objectsInLocalStorage, 'id');
+                    echo '<pre>';
+                    print_r($_POST['objects_in_local_storage']);
+                    echo '</pre>';
+
                     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                     $args = array(
                         'post_type' => 'project',

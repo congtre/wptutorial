@@ -9,6 +9,7 @@
         @include g.mq('lg') {
             display: flex;
             justify-content: space-between;
+            align-items: flex-start;
         }
     }
     &__main {
@@ -18,7 +19,10 @@
     }
     &__sidebar {
         @include g.mq('lg') {
+            position: sticky;
+            top: 120px;
             width: 250px;
+            padding-bottom: 120px;
         }
     }
     &__list {
