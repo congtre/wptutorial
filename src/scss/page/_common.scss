@@ -90,3 +90,11 @@
         right: 20px;
     }
 }
+
+.sub-visual {
+    padding: 20px 0;
+    background-color: g.$color-light-gray;
+    @include g.mq('md') {
+        padding: 40px 0;
+    }
+}

@@ -5,9 +5,9 @@
             <div class="blog-article__main">
                 <div class="blog-detail">
                     <h2 class="blog-detail__title"><?php the_title(); ?></h2>
-                    <div class="blog-article__meta">
-                        <p class="blog-article__date"><?php echo get_the_date(get_option('date_format')); ?></p>
-                        <p class="blog-article__cate"><?php echo get_the_category()[0]->name; ?></p>
+                    <div class="c-blog__article-meta">
+                        <p class="c-blog__article-date"><?php echo get_the_date(get_option('date_format')); ?></p>
+                        <p class="c-blog__article-cate"><?php echo get_the_category()[0]->name; ?></p>
                     </div>
                     <div class="blog-detail__content">
                         <?php the_content(); ?>
@@ -29,27 +29,7 @@
                         ?>
                         <?php if ($post_query->have_posts()): ?>
                         <div class="c-blog__list">
-                            <?php while ($post_query->have_posts()) : $post_query->the_post(); ?>
-                            <div class="c-blog__article">
-                                <a href="<?php the_permalink(); ?>" class="c-blog__article-link">
-                                    <p class="c-blog__article-image">
-                                        <?php if (has_post_thumbnail()): ?>
-                                        <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>">
-                                        <?php else: ?>
-                                        <img src="<?php echo get_template_directory_uri(); ?>/dist/images/img_default.jpg" alt="<?php the_title(); ?>">
-                                        <?php endif; ?>
-                                    </p>
-                                    <div class="c-blog__article-info">
-                                        <div class="c-blog__article-meta">
-                                            <p class="c-blog__article-date"><?php echo get_the_date(get_option('date-format')); ?></p>
-                                            <p class="c-blog__article-cate"><?php echo $category->name; ?></p>
-                                        </div>
-                                        <p class="c-blog__article-title"><?php the_title(); ?></p>
-                                        <p class="c-blog__article-desc"><?php echo mb_strimwidth(strip_tags(get_the_content()), 0, 200, '...', 'UTF-8'); ?></p>
-                                    </div>
-                                </a>
-                            </div>
-                            <?php endwhile; ?>
+                        <?php get_template_part('template/content', 'blog-loop', $post_query); ?>
                         </div>
                         <?php endif; ?>
                         <?php wp_reset_postdata(); ?>

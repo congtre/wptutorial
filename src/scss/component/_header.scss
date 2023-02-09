@@ -30,6 +30,7 @@
         z-index: 10;
         opacity: 0;
         visibility: hidden;
+        overflow-y: auto;
         transition: all 0.5s;
         @include g.mq('lg') {
             position: static;
@@ -153,7 +154,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
         &-link {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-weight: 500;
             transition: all 0.5s;
             &:hover {
@@ -170,13 +176,18 @@
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            margin-left: 15px;
+            width: 280px;
+            margin: 15px 0 0;
             padding: 7px 20px;
             background-color: g.$color-orange;
             border-radius: 5px;
             color: g.$color-white;
             font-weight: 500;
             transition: all 0.5s;
+            @include g.mq('sm') {
+                width: auto;
+                margin: 0 0 0 15px;
+            }
             &::before {
                 content: '';
                 display: inline-block;
@@ -241,5 +252,32 @@
 
     &.active span::after {
         transform: translateX(-50%) rotate(-40deg);
+    }
+}
+
+@keyframes animation-header {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.project-like__number {
+    display: none;
+    &.show {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        margin-left: 5px;
+        border-radius: 100%;
+        background-color: g.$color-orange;
+        color: #fff;
+        font-size: g.rem(12);
+        font-weight: 500;
+        line-height: 1.5em;
     }
 }

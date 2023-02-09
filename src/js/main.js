@@ -171,15 +171,12 @@ $(function () {
 
             if (searchSelectLabel.length) {
                 searchSelectLabel.click(function () {
-                    const searchSelectList = $(this)
-                        .parent()
-                        .find('.js-searchSelectList');
-                    searchSelectList.toggleClass('active');
+                    $('.js-searchSelectList').toggleClass('active');
                 });
 
                 searchOption.click(function () {
                     const self = $(this);
-                    let cate = ['all'];
+                    let cateOption = ['all'];
 
                     if (self.hasClass('js-searchOptionAll')) {
                         if (!self.hasClass('active')) {
@@ -188,22 +185,22 @@ $(function () {
                             searchOption.removeClass('active');
                         }
                     } else {
+                        cateOption = [];
                         searchOptionAll.removeClass('active');
                         self.toggleClass('active');
-                        cate = [];
                         searchOption.each(function (index, el) {
                             const elItem = $(el);
                             if (elItem.hasClass('active')) {
-                                cate.push(elItem.data('cate'));
+                                cateOption.push(elItem.data('cate'));
                             }
                         });
 
                         if (!searchOption.hasClass('active')) {
-                            cate = ['all'];
+                            cateOption = ['all'];
                         }
                     }
 
-                    $('input[name="cate"]').val(cate);
+                    $('input[name="cate"]').val(cateOption);
                 });
 
                 searchTab.click(function () {
@@ -217,24 +214,76 @@ $(function () {
         },
         buttonLike: function () {
             const _this = this;
-            const buttonLike = $('.js-buttonLike');
+            const projectWrap = $('.project-article__list');
 
-            buttonLike.click(function () {
+            projectWrap.on('click', '.js-buttonLike', function () {
                 const self = $(this);
                 const id = self.data('id');
                 const title = self.data('title');
+
                 _this.toggleProjectToLocalStorage(id, title);
                 self.toggleClass('active');
+
+                _this.updateQuantityProjectLike();
             });
+        },
+        loadButtonLike: function () {
+            const _this = this;
+            $(window).on('load', function () {
+                const projectsInLocalStorage =
+                    JSON.parse(localStorage.getItem('projectLike')) || [];
+                projectsInLocalStorage.forEach((item) => {
+                    const element = $(`.js-buttonLike[data-id=${item.id}]`);
+                    if (element) {
+                        element.addClass('active');
+                    }
+                });
+                _this.updateQuantityProjectLike();
+            });
+        },
+        loadProjectsLike: function () {
+            if ($('.project-like').length) {
+                const projectsInLocalStorage =
+                    JSON.parse(localStorage.getItem('projectLike')) || [];
+
+                if (projectsInLocalStorage.length === 0) {
+                    $('.project-article__list').append(
+                        `<div class="notfound"><p class="notfound__text">No results found.</p></div>`
+                    );
+                    $('.project-like__loading').remove();
+                    return;
+                }
+
+                const projectIds = projectsInLocalStorage.map(function (
+                    project
+                ) {
+                    return project.id;
+                });
+
+                const url = window.location.pathname.replace('like/', '');
+
+                $.ajax({
+                    type: 'POST',
+                    url: `${url}wp-admin/admin-ajax.php`,
+                    data: {
+                        action: 'get_projects_by_ids',
+                        project_ids: projectIds,
+                    },
+                    success: function (res) {
+                        $('.project-like__loading').remove();
+                        $('.project-article__list').append(res);
+                    },
+                });
+            }
         },
         toggleProjectToLocalStorage: function (id, title) {
             const project = { id, title };
-            let projectInLocalStorage =
+            let projectsInLocalStorage =
                 JSON.parse(localStorage.getItem('projectLike')) || [];
             let isExisted = false;
             let indexToRemove;
 
-            projectInLocalStorage.forEach((item, index) => {
+            projectsInLocalStorage.forEach((item, index) => {
                 if (item.id === id) {
                     isExisted = true;
                     indexToRemove = index;
@@ -242,39 +291,26 @@ $(function () {
             });
 
             if (isExisted) {
-                projectInLocalStorage.splice(indexToRemove, 1);
+                projectsInLocalStorage.splice(indexToRemove, 1);
             } else {
-                projectInLocalStorage.push(project);
+                projectsInLocalStorage.push(project);
             }
 
             localStorage.setItem(
                 'projectLike',
-                JSON.stringify(projectInLocalStorage)
+                JSON.stringify(projectsInLocalStorage)
             );
         },
-        loadButtonLike: function () {
-            $(window).on('load', function () {
-                const projectInLocalStorage =
-                    JSON.parse(localStorage.getItem('projectLike')) || [];
-                projectInLocalStorage.forEach((item) => {
-                    const element = $(`.js-buttonLike[data-id=${item.id}]`);
-                    if (element) {
-                        element.addClass('active');
-                    }
-                });
-            });
-
-            const projectInLocalStorage =
-                JSON.stringify(localStorage.getItem('projectLike')) || [];
-
-            $.ajax({
-                type: 'POST',
-                url: 'http://localhost:3000/00_jweb/00_dcyoung/wptutorial/wp-admin/admin-ajax.php',
-                data: `objects_in_local_storage=${projectInLocalStorage}`,
-                success: function (response) {
-                    console.log(111);
-                },
-            });
+        updateQuantityProjectLike: function () {
+            const projectsInLocalStorage =
+                JSON.parse(localStorage.getItem('projectLike')) || [];
+            const el = $('.project-like__number');
+            if (projectsInLocalStorage.length !== 0) {
+                el.addClass('show');
+            } else {
+                el.removeClass('show');
+            }
+            el.text(projectsInLocalStorage.length);
         },
         init: function () {
             this.toTop();
@@ -286,6 +322,7 @@ $(function () {
             this.search();
             this.buttonLike();
             this.loadButtonLike();
+            this.loadProjectsLike();
         },
     };
 

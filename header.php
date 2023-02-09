@@ -52,6 +52,8 @@
                     ));
                 ?>
                 <div class="header__user">
+                    <a href="<?php echo home_url('/like'); ?>" class="header__user-link">Tin đã lưu<span class="project-like__number"></span></a>
+                    <div class="header__user-devide"></div>
                     <a href="#" class="header__user-link">Đăng nhập</a>
                     <div class="header__user-devide"></div>
                     <a href="#" class="header__user-link">Đăng ký</a>
@@ -77,8 +79,10 @@
             </section>
             <?php else: ?>
             <div class="sub-visual">
-                <div class="c-search c-search--sub">
-                    <?php get_search_form(); ?>
+                <div class="container">
+                    <div class="c-search">
+                        <?php get_search_form(); ?>
+                    </div>
                 </div>
             </div>
             <?php endif; ?>

@@ -39,6 +39,7 @@
         &-input {
             background-color: g.$color-white;
             border-radius: 5px;
+            overflow: hidden;
             @include g.mq('sm') {
                 position: relative;
                 display: flex;
@@ -91,6 +92,7 @@
             visibility: hidden;
             cursor: pointer;
             overflow: hidden;
+            z-index: 1;
             &.active {
                 opacity: 1;
                 visibility: visible;
@@ -173,9 +175,5 @@
                 background-color: g.$color-primary;
             }
         }
-    }
-    &--sub {
-        padding: 20px;
-        background-color: g.$color-light-gray;
     }
 }
