@@ -210,6 +210,16 @@ $(function () {
                     const type = $(this).data('type');
                     $('input[name="type"]').val(type);
                 });
+
+                $('body').click(function (e) {
+                    console.log(e);
+                    if (
+                        !e.target.closest('.js-searchSelectList') &&
+                        !e.target.closest('.js-searchSelectLabel')
+                    ) {
+                        $('.js-searchSelectList').removeClass('active');
+                    }
+                });
             }
         },
         buttonLike: function () {
@@ -321,8 +331,8 @@ $(function () {
             this.slideProjectDetail();
             this.search();
             this.buttonLike();
-            this.loadButtonLike();
             this.loadProjectsLike();
+            this.loadButtonLike();
         },
     };
 

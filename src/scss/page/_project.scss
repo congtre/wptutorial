@@ -30,20 +30,23 @@
     }
     .c-project__list {
         margin-bottom: 70px;
+        justify-content: space-between;
     }
     .c-project__item {
-        max-width: 100%;
-        width: 100%;
         margin-right: 0 !important;
         @include g.mq('md') {
+        }
+        @include g.mq('lg') {
             display: flex;
+            width: 100%;
+            max-width: 100%;
         }
         &:last-child {
             margin-bottom: 0;
         }
     }
     .c-project__image {
-        @include g.mq('sm') {
+        @include g.mq('lg') {
             width: 280px;
             height: auto;
         }
@@ -58,7 +61,7 @@
         }
     }
     .c-project__info {
-        @include g.mq('sm') {
+        @include g.mq('lg') {
             width: calc(100% - 280px);
         }
     }

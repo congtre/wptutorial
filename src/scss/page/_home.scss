@@ -7,6 +7,7 @@
     height: 450px;
     padding: 100px 0;
     background: url(../images/img_visual.jpg) no-repeat center/cover;
+    z-index: 2;
     @include g.mq('lg') {
         height: 650px;
     }

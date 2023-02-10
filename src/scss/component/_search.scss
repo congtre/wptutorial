@@ -39,7 +39,6 @@
         &-input {
             background-color: g.$color-white;
             border-radius: 5px;
-            overflow: hidden;
             @include g.mq('sm') {
                 position: relative;
                 display: flex;
@@ -122,7 +121,7 @@
             &::after {
                 content: '';
                 position: absolute;
-                top: 13px;
+                top: 12px;
                 right: 18px;
                 width: 15px;
                 height: 15px;
@@ -130,6 +129,9 @@
                     center/contain;
                 opacity: 0;
                 visibility: hidden;
+                @include g.mq('md') {
+                    top: 13px;
+                }
             }
             &.active {
                 &::after {
