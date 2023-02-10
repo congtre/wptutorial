@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<section class="project-article project-like">
+<section class="project-article project-wrap project-like">
     <input type="hidden" id="hidden-input" name="objects_in_local_storage">
     <div class="container">
         <h1 class="c-heading-archive">Dự án đã lưu</h1>

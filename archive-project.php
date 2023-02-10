@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<section class="project-article">
+<section class="project-article project-wrap">
     <div class="container">
         <h1 class="c-heading-archive">Dự án</h1>
         <div class="project-article__wrap">
