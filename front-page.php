@@ -15,7 +15,7 @@
             $post_query = new WP_Query($args);
         ?>
         <?php if ($post_query->have_posts()): ?>
-        <div class="project-article__list">
+        <div class="project-wrap">
             <?php get_template_part('template/content', 'project-loop', $post_query); ?>
         </div>
         <?php endif; ?>

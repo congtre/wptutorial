@@ -150,7 +150,7 @@ $(function () {
             }
 
             if ($('.js-relatedProjectDetail').length) {
-                $('.js-relatedProjectDetail').slick({
+                $('.js-relatedProjectDetail').find('.c-project__list').slick({
                     dots: false,
                     arrows: true,
                     slidesToShow: 3,
@@ -224,7 +224,7 @@ $(function () {
         },
         buttonLike: function () {
             const _this = this;
-            const projectWrap = $('.project-article__list');
+            const projectWrap = $('.project-wrap');
 
             projectWrap.on('click', '.js-buttonLike', function () {
                 const self = $(this);
