@@ -14,13 +14,13 @@ const browserSync = require('browser-sync').create();
 
 const DIR = {
     src: './src',
-    dest: './dist',
+    dest: './assets',
     srcSass: './src/scss/**/*.scss',
     srcJs: './src/js/**/*.js',
     srcImages: './src/images/*',
-    destSass: './dist/css',
-    destJs: './dist/js',
-    destImages: './dist/images',
+    destSass: './assets/css',
+    destJs: './assets/js',
+    destImages: './assets/images',
     pathPhp: 'http://localhost/00_jweb/00_dcyoung/wptutorial/',
 };
 

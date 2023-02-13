@@ -212,7 +212,6 @@ $(function () {
                 });
 
                 $('body').click(function (e) {
-                    console.log(e);
                     if (
                         !e.target.closest('.js-searchSelectList') &&
                         !e.target.closest('.js-searchSelectLabel')
